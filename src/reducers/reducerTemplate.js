@@ -1,6 +1,6 @@
 
 const initialState = {
-    counter: 0
+    currentPrice: 0
 }
 
 //purpose of reducer is to return a new global state
@@ -11,7 +11,7 @@ const reducerTemplate = (state = initialState, action) => {
         case "INCREMENT":   //must match name of action.type in actions
             return{
                 ...state,
-                counter: state.counter + action.data
+                currentPrice: state.currentPrice + action.data
             }
         
         default:
