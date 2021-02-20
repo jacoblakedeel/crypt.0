@@ -1,0 +1,37 @@
+body{
+    background-color: #272D2D;
+}
+
+.paperCard{
+    background-color: #165430;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
+.mainFont{
+    color: #F6F8FF;
+    font-family: 'DotGothic16', sans-serif;
+}
+
+.bgHeader{
+    background-color: #165430;
+}
+
+ul{
+    list-style-type: none;
+}
+
+
+a{
+    color: #F6F8FF;
+}
+a:visited{
+    color: #F6F8FF;
+}
+a:hover{
+    background-color: transparent;
+    color: none;
+}
+
+
+

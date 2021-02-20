@@ -6,13 +6,17 @@ import {
   Switch
 } from 'react-router-dom';
 import {createStore} from 'redux';
-import {Provider} from 'react-redux'
+import {Provider} from 'react-redux';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './assets/styles.css';
+import 'mdbreact/dist/css/mdb.css';
 
 
 import App from './App';
 import BaseLayout from './components/layout/BaseLayout';
-import Hooks from './components/Hooks';
-import Classes from './components/Classes';
+import News from './components/News';
+import About from './components/About';
+import Prices from './components/Prices';
 import reducer from './reducers/reducerTemplate';
 
 
@@ -58,9 +62,9 @@ ReactDOM.render(
       <Router>
         <BaseLayout>
           <Switch>
-            <Route exact path="/" component={App}/>
-            <Route exact path="/hooks" component={Hooks}/>
-            <Route exact path="/classes" component={Classes}/>
+            <Route exact path="/" component={Prices}/>
+            <Route exact path="/news" component={News}/>
+            <Route exact path="/about" component={About}/>
           </Switch>
         </BaseLayout>
       </Router>
