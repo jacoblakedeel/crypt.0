@@ -5,10 +5,10 @@ import { MDBContainer } from "mdbreact";
 class Chart extends React.Component {
     state = {
         dataLine: {
-        labels: ["January", "February", "March", "April", "May", "June", "July"],
+        labels: ["February", "March", "April", "May", "June", "July"],
         datasets: [
             {
-            label: "My First dataset",
+            label: "Current Price",
             fill: true,
             lineTension: 0.3,
             backgroundColor: "rgba(225, 204,230, .3)",
@@ -26,10 +26,10 @@ class Chart extends React.Component {
             pointHoverBorderWidth: 2,
             pointRadius: 1,
             pointHitRadius: 10,
-            data: [65, 59, 80, 81, 56, 55, 40]
+            data: [((this.props.percent) * (this.props.price)),this.props.price]
             },
             {
-            label: "My Second dataset",
+            label: "All-Time High",
             fill: true,
             lineTension: 0.3,
             backgroundColor: "rgba(184, 185, 210, .3)",
@@ -47,7 +47,7 @@ class Chart extends React.Component {
             pointHoverBorderWidth: 2,
             pointRadius: 1,
             pointHitRadius: 10,
-            data: [28, 48, 40, 19, 86, 27, 90]
+            data: [0]
             }
         ]
         }
