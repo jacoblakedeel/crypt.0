@@ -3,7 +3,7 @@ import {Paper} from './Styles';
 import {useSelector} from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faReact, faJsSquare, faCss3, faBootstrap, faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import jacobPhoto from "../assets/jacob.jpeg"
+import jacobPhoto from "../assets/jacob2.jpeg"
 
 const About = () => {
 

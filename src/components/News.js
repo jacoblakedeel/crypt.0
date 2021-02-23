@@ -17,7 +17,7 @@ class News extends Component {
     }
 
     componentDidMount = async() => {
-        let url = 'http://cryptopanic.com/api/v1/posts/?auth_token=63d5283d91ad6afa1159e9fefcbe7b96fb529a86&kind=news&filter=bullish'
+        let url = 'http://cryptopanic.com/api/v1/posts/?auth_token=63d5283d91ad6afa1159e9fefcbe7b96fb529a86&kind=news'
 
         let response = await fetch(url);
 
@@ -61,7 +61,6 @@ class News extends Component {
                     </div>
                 </div>
             </div>
-            <Counter/>
             <Paper className="mt-5 mb-5 ml-4 mr-4 paperCard">
                 <div className="row mainFont">
                     <div className="col"><h1>Crypto News</h1></div>
@@ -71,7 +70,7 @@ class News extends Component {
             <ul>
                 {newsList}
             </ul>
-            
+            <Counter/>
             </>
         )
     }
