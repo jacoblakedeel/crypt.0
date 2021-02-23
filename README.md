@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# CRYPT.0
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+CRYPT.0 is a cryptocurrency news app that uses up to the minute price data from the Nomics API to keep users up to date on crypto occurences.
 
 ## Available Scripts
 

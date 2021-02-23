@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux'
 import {Paper} from './Styles';
 import {Link} from 'react-router-dom'
-import {addCurrenciesToState} from '../actions/templateActions'
+import {addCurrenciesToState, addCurrencyToGraph} from '../actions/templateActions'
 import Chart from './Chart';
 import Counter from './Counter';
 import IndividualCrypto from './IndividualCrypto';
@@ -10,19 +10,30 @@ import IndividualCrypto from './IndividualCrypto';
 const Prices = (props) => {
 
     const [individualCrypto, setIndividualCrypto] = useState([]);
+    const [cryptoNews, setCryptoNews] = useState([]);
     
     const [showIndividualCrypto, setShowIndividualCrypto] = useState(false);
 
+    
 
+
+    //setting up dispatch variable
+    const dispatch = useDispatch();
 
 
     //function for individual crypto click
-    const handleClick = (currency) => {
-        
+    const handleClick = async (currency) => {
+        let url = 'http://cryptopanic.com/api/v1/posts/?auth_token=63d5283d91ad6afa1159e9fefcbe7b96fb529a86&kind=news&filter={currency.currency}'
+        let response = await fetch(url);
+        let data = await response.json();
+        setCryptoNews(data)
+        console.log(data)
+
         setIndividualCrypto(currency)
-        console.log(currency)
+        // console.log(currency)
         
         setShowIndividualCrypto(!showIndividualCrypto);
+        
 
         const date = new Date();
         // console.log(date)
@@ -30,14 +41,14 @@ const Prices = (props) => {
     }
     
 
-    const dispatch = useDispatch();
     
-    React.useEffect(async()=>{
-        let url = 'https://api.nomics.com/v1/currencies/ticker?key=04d4c28e8d2730d49fe6e0f015800b4e&interval=1d,365d&per-page=25&page=1&start=2018-04-14T00%3A00%3A00Z&end={date}&attributes=description'
+    useEffect(async()=>{
+        
+        let url = 'https://api.nomics.com/v1/currencies/ticker?key=04d4c28e8d2730d49fe6e0f015800b4e&interval=1d,30d&per-page=25&page=1&start=2018-04-14T00%3A00%3A00Z&end={date}&attributes=description'
         let response = await fetch(url);
         
         let data = await response.json();
-        console.log(data);
+        // console.log(data);
 
         const setCurrencies = () => dispatch(addCurrenciesToState(data))
         setCurrencies()
@@ -60,10 +71,12 @@ const Prices = (props) => {
                 </Link>
     });
 
+    //mapping currencies for ticker
     let tickerList = currencies.map((currency, index)=>{
         return <div key={currency.id} className="ticker-item"><img src={currency.logo_url} height='20px'/> {currency.symbol}: ${Number.parseFloat(currency.price).toFixed(2)}</div>
     });
     
+    //conditional render
     if(showIndividualCrypto){
         return <>
             <div className="tcontainer row">
@@ -74,13 +87,9 @@ const Prices = (props) => {
                 </div>
             </div>
             <a id="individualCrypto">
-                <IndividualCrypto showIndividualCrypto={showIndividualCrypto} individualCrypto={individualCrypto} handleClick={handleClick}/>
+                <IndividualCrypto cryptoNews={cryptoNews.results} showIndividualCrypto={showIndividualCrypto} individualCrypto={individualCrypto} handleClick={handleClick}/>
             </a>
             <Counter/>
-        
-        {/* <div className="row mt-5">
-            <iframe className="col" width="80%" scrolling="yes" allowtransparency="true" frameBorder="0" src="https://cryptopanic.com/widgets/news/?bg_color=165430&amp;font_family=sans&amp;header_bg_color=165430&amp;header_text_color=FFFFFF&amp;link_color=F6F8FF&amp;news_feed=recent&amp;text_color=F6F8FF" height="350px"></iframe>
-        </div> */}
         </>
     }
     else{

@@ -1,7 +1,8 @@
 
 const initialState = {
-    numberLikes: 0,
-    currencies: []
+    numberLikes: 10,
+    currencies: [],
+    individualCurrency: []
 }
 
 //purpose of reducer is to return a new global state
@@ -18,6 +19,11 @@ const reducerTemplate = (state = initialState, action) => {
             return{
                 ...state,
                 currencies: action.data
+            }
+        case "ADDCURRENCYTOGRAPH":
+            return{
+                ...state,
+                individualCurrency: action.data
             }
         
         default:
