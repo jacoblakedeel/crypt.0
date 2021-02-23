@@ -1,6 +1,7 @@
 
 const initialState = {
-    numberLikes: 0
+    numberLikes: 0,
+    currencies: []
 }
 
 //purpose of reducer is to return a new global state
@@ -12,6 +13,11 @@ const reducerTemplate = (state = initialState, action) => {
             return{
                 ...state,
                 numberLikes: state.numberLikes + action.data
+            }
+        case "ADDCURRENCIESTOSTATE":
+            return{
+                ...state,
+                currencies: action.data
             }
         
         default:

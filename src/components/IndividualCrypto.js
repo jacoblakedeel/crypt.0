@@ -20,6 +20,10 @@ const IndividualCrypto = (props) => {
                         <div>Rank: {props.individualCrypto.rank}</div>
                     </div>
                 </div>
+                <div className="mt-5">
+                    <button onClick={props.handleClick}>Close</button>
+                </div>
+                
                 {/* <div className="row">
                     <Chart percent={individualCrypto["1d"]?.price_change_pct} price={individualCrypto.price} allTime={individualCrypto.high}/>
                 </div> */}
@@ -28,7 +32,6 @@ const IndividualCrypto = (props) => {
             
         </>
     )
- 
 }
 
 export default IndividualCrypto

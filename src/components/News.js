@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import {Paper} from './Styles';
 import Counter from './Counter';
+import {connect} from 'react-redux';
+
+
 
 class News extends Component {
 
@@ -13,21 +16,21 @@ class News extends Component {
         }
     }
 
-
     componentDidMount = async() => {
         let url = 'http://cryptopanic.com/api/v1/posts/?auth_token=63d5283d91ad6afa1159e9fefcbe7b96fb529a86&kind=news&filter=bullish'
 
         let response = await fetch(url);
 
         let data = await response.json();
-        console.log(data.results)
+        // console.log(data.results)
 
         this.setState({
             news: data.results
         })
     }
+    
 
-
+    
 
 
     render() {
@@ -45,9 +48,19 @@ class News extends Component {
         })
 
 
+        let tickerList = (this.props.tickerList).map((currency, index)=>{
+            return <div key={currency.id} className="ticker-item"><img src={currency.logo_url} height='20px'/> {currency.symbol}: ${Number.parseFloat(currency.price).toFixed(2)}</div>
+        });
 
         return (
             <>
+            <div className="tcontainer row">
+                <div className="ticker-wrap">
+                    <div className="ticker-move mainFont">
+                        {tickerList}
+                    </div>
+                </div>
+            </div>
             <Counter/>
             <Paper className="mt-5 mb-5 ml-4 mr-4 paperCard">
                 <div className="row mainFont">
@@ -64,4 +77,15 @@ class News extends Component {
     }
 }
 
-export default News;
+
+let mapStateToProps = (state) => {
+    return{
+        tickerList: state.currencies,
+    }
+}
+
+
+
+
+
+export default connect(mapStateToProps, null)(News);

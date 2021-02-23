@@ -5,11 +5,29 @@ body{
 .paperCard{
     background-color: #165430;
 }
+.paperCard2{
+    background-color: rgb(125, 41, 41);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;  
+}
+.paperCard3{
+    background-color: #165430;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;  
+}
 
 
 @import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
 .mainFont{
     color: #F6F8FF;
+    font-family: 'DotGothic16', sans-serif;
+}
+.mainFont2{
+    color: #272D2D;
     font-family: 'DotGothic16', sans-serif;
 }
 
@@ -60,7 +78,7 @@ a:hover{
     animation-iteration-count: infinite;
     animation-timing-function: linear;
     animation-name: ticker;
-    animation-duration: 220s;
+    animation-duration: 100s;
 }
 .ticker-move:hover{
     animation-play-state: paused; /* Pause scroll on mouse hover */
