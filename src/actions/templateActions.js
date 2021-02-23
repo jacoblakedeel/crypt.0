@@ -8,5 +8,14 @@ export const increment = (n) => {
     }
 }
 
+export const addCurrenciesToState = (currencies) => {
+    
+    return{
+        type: "ADDCURRENCIESTOSTATE",
+        data: currencies
+    }
+}
+
+
 
 
