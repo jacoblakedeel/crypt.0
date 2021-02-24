@@ -26,18 +26,26 @@ const About = () => {
             </div>
 
             <Paper className="mainFont mt-5 ml-5 paperCard3">
-                <img src={jacobPhoto} height="200px"/>
-                <div>Jacob Deel is a Junior Software Developer looking to shape the future...</div>
+                {/* <div className="row">
+                    <img className="col" width="50%" src={jacobPhoto}/>
+                </div> */}
+                <div className="row">
+                    <div className="col-xs-6 mr-5">
+                        <a href="https://github.com/jacoblakedeel" target="_blank">
+                            <FontAwesomeIcon className="ml-5" icon={faGithub} size="4x"/>
+                            <h3>GitHub</h3>
+                        </a>
+                    </div>
+                    <div className="col-xs-6">
+                        <a href="https://www.linkedin.com/in/jacob-deel-093b401b9/" target="_blank">
+                            <FontAwesomeIcon className="ml-5" icon={faLinkedin} size="4x"/>
+                            <h3>Linkedin</h3>
+                        </a>
+                    </div>
+                </div>
             </Paper>
-            <Paper className="mt-5 ml-5 paperCard2">
-                <a href="https://github.com/jacoblakedeel" target="_blank">
-                    <FontAwesomeIcon className="ml-5" icon={faGithub} size="4x"/>
-                    <h3>GitHub</h3>
-                </a>
-                <a href="https://www.linkedin.com/in/jacob-deel-093b401b9/" target="_blank">
-                    <FontAwesomeIcon className="ml-5" icon={faLinkedin} size="4x"/>
-                    <h3>Linkedin</h3>
-                </a>
+            <Paper className="mainFont mt-5 ml-5 paperCard3">
+                <span><h3>Jacob Deel is a Junior Software Developer looking to shape the future...</h3></span>
             </Paper>
             <Paper className="mainFont mt-5 ml-5 paperCard3">
                 <h1>CRYPT.0 WAS CREATED USING</h1>
