@@ -21,6 +21,7 @@ body{
 }
 
 
+
 @import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
 .mainFont{
     color: #F6F8FF;
@@ -37,6 +38,10 @@ body{
 
 ul{
     list-style-type: none;
+}
+
+img{
+    border-radius: 50%;
 }
 
 

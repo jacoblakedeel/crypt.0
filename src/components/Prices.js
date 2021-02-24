@@ -1,17 +1,16 @@
 import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux'
 import {Paper} from './Styles';
-import {Link} from 'react-router-dom'
-import {addCurrenciesToState, addCurrencyToGraph} from '../actions/templateActions'
-import Chart from './Chart';
+import {HashLink as Link} from 'react-router-hash-link';
+import {addCurrenciesToState} from '../actions/templateActions'
 import Counter from './Counter';
 import IndividualCrypto from './IndividualCrypto';
 
 const Prices = (props) => {
 
+    //local state variables
     const [individualCrypto, setIndividualCrypto] = useState([]);
     const [cryptoNews, setCryptoNews] = useState([]);
-    
     const [showIndividualCrypto, setShowIndividualCrypto] = useState(false);
 
     
@@ -23,7 +22,7 @@ const Prices = (props) => {
 
     //function for individual crypto click
     const handleClick = async (currency) => {
-        let url = 'http://cryptopanic.com/api/v1/posts/?auth_token=63d5283d91ad6afa1159e9fefcbe7b96fb529a86&kind=news&filter={currency.currency}'
+        let url = `http://cryptopanic.com/api/v1/posts/?auth_token=63d5283d91ad6afa1159e9fefcbe7b96fb529a86&kind=news&currencies=${currency.symbol}`
         let response = await fetch(url);
         let data = await response.json();
         setCryptoNews(data)
@@ -34,17 +33,14 @@ const Prices = (props) => {
         
         setShowIndividualCrypto(!showIndividualCrypto);
         
-
-        const date = new Date();
-        // console.log(date)
-        // console.log(individualCrypto["1d"])
     }
-    
 
-    
+
+    //begin api call for crypto prices
     useEffect(async()=>{
         
         let url = 'https://api.nomics.com/v1/currencies/ticker?key=04d4c28e8d2730d49fe6e0f015800b4e&interval=1d,30d&per-page=25&page=1&start=2018-04-14T00%3A00%3A00Z&end={date}&attributes=description'
+
         let response = await fetch(url);
         
         let data = await response.json();
@@ -56,7 +52,7 @@ const Prices = (props) => {
     const currencies = useSelector(state => state.currencies);
 
     let currenciesList = currencies.map((currency, index)=>{
-        return <Link to="/" key={currency.id} onClick={()=>handleClick(currency)}>
+        return <Link smooth to="/#individualCrypto" key={currency.id} onClick={()=>handleClick(currency)}>
                     <li>
                         <Paper className="mt-5 paperCard">
                             <div className="row mainFont">
@@ -71,6 +67,7 @@ const Prices = (props) => {
                 </Link>
     });
 
+
     //mapping currencies for ticker
     let tickerList = currencies.map((currency, index)=>{
         return <div key={currency.id} className="ticker-item"><img src={currency.logo_url} height='20px'/> {currency.symbol}: ${Number.parseFloat(currency.price).toFixed(2)}</div>
@@ -79,14 +76,14 @@ const Prices = (props) => {
     //conditional render
     if(showIndividualCrypto){
         return <>
-            <div className="tcontainer row">
+            <div id="individualCrypto" className="tcontainer row">
                 <div className="ticker-wrap">
                     <div className="ticker-move mainFont">
                         {tickerList}
                     </div>
                 </div>
             </div>
-            <a id="individualCrypto">
+            <a>
                 <IndividualCrypto cryptoNews={cryptoNews.results} showIndividualCrypto={showIndividualCrypto} individualCrypto={individualCrypto} handleClick={handleClick}/>
             </a>
             <Counter/>

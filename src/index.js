@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import {
   BrowserRouter as Router,
   Route,
-  Switch
+  Switch,
+  HashRouter
 } from 'react-router-dom';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
@@ -59,15 +60,17 @@ store.subscribe(()=>{
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Router>
-        <BaseLayout>
-          <Switch>
-            <Route exact path="/" component={Prices}/>
-            <Route exact path="/news" component={News}/>
-            <Route exact path="/about" component={About}/>
-          </Switch>
-        </BaseLayout>
-      </Router>
+      <HashRouter>
+        <Router>
+          <BaseLayout>
+            <Switch>
+              <Route exact path="/" component={Prices}/>
+              <Route exact path="/news" component={News}/>
+              <Route exact path="/about" component={About}/>
+            </Switch>
+          </BaseLayout>
+        </Router>
+      </HashRouter>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
