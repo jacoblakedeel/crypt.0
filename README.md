@@ -7,6 +7,8 @@ In addition to prices, CRYPT.0 uses the CryptoPanic API to deliver news related 
 
 ### `Technologies Used`
 
-CRYPT.0 was built using ####React, ####Redux, ####Javascript, and ####Bootstrap ####CSS
+CRYPT.0 was built using
+
+### `React`, `Redux`, `Javascript`, `Bootstrap CSS`
 
 
