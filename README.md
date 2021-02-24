@@ -2,7 +2,7 @@
 
 CRYPT.0 is a cryptocurrency news app that uses up to the minute price data from the Nomics API to keep users up to date on crypto occurences.
 
-<img src="./assets/crypt.png"
+![CRYPT.0 Screenshot](/assets/crypt.png)
 
 ### `npm start`
 
